@@ -1,0 +1,80 @@
+[mysqld_safe]
+socket		= /var/run/mysqld/mysqld.sock
+nice		= 0
+
+[mysqld]
+user		= mysql
+pid-file	= /var/lib/mysql/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+port		= 3306
+basedir		= /usr
+datadir		= /var/lib/mysql
+tmpdir		= /tmp
+#lc-messages-dir	= /usr/share/mysql
+
+skip-name-resolve = 1
+
+bind-address		= 0.0.0.0
+
+key_buffer_size		= 16M
+max_allowed_packet = 128M
+thread_stack		= 192K
+thread_cache_size = 128
+#thread_cache_size = 8
+
+myisam-recover-options  = BACKUP
+
+innodb_buffer_pool_size = 8G
+innodb_log_buffer_size = 64M
+#innodb_log_buffer_size = 256M
+innodb_buffer_pool_chunk_size=256M
+innodb_read_io_threads = 12
+#innodb_read_io_threads = 16
+innodb_write_io_threads = 12
+#innodb_write_io_threads = 16
+#innodb_buffer_pool_instances = 16
+innodb_buffer_pool_instances = 48
+#innodb_dedicated_server = 1
+innodb_stats_on_metadata = 0
+innodb_file_per_table = 1
+innodb_flush_log_at_trx_commit = 2
+innodb_flush_method = O_DIRECT
+innodb_doublewrite = 0
+innodb_lru_scan_depth=256
+innodb_lock_wait_timeout=31536000
+innodb_rollback_on_timeout=1
+
+general_log = 0
+slow_query_log = 0
+
+disable-log-bin = 1
+
+performance-schema = 0
+local-infile = 0
+mysqlx = 0
+
+open_files_limit = 200000
+
+sql_mode = "STRICT_TRANS_TABLES,ONLY_FULL_GROUP_BY,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"
+
+max_connections = 1024
+
+table_definition_cache = 65536
+table_open_cache = 65536
+
+wait_timeout = 100
+connect_timeout = 50
+interactive_timeout = 300
+
+tmp_table_size = 128M
+max_heap_table_size = 128M
+
+read_buffer_size = 256K
+join_buffer_size = 512K
+sort_buffer_size = 512K
+read_rnd_buffer_size = 512K
+
+slow-query-log = 1
+long_query_time = 2
+slow_query_log_file = /var/log/mysql_slow_query.log
+#log-error = /var/log/mysql/db.[removed].com.err
