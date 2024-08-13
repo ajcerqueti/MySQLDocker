@@ -5,7 +5,7 @@ Basic docker configuration for MySQL for local dev
 
 To create container:
 ```
-docker composer up
+docker compose up
 ```
 
 To start container subsequently:
